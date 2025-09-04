@@ -1,48 +1,48 @@
-.box {
+.chatBox {
   width: 400px;
-  margin: 40px auto;
-  padding: 15px;
-  border: 1px solid #999;
-  border-radius: 8px;
-  background: #fdfdfd;
+  margin: 30px auto;
+  border: 1px solid gray;
+  border-radius: 6px;
+  padding: 12px;
   font-family: Arial, sans-serif;
+  background: #fff;
 }
 
-.head {
+.chatBox h2 {
   text-align: center;
-  margin-bottom: 10px;
-}
-
-.screen {
-  height: 200px;
-  border: 1px solid #ccc;
   margin-bottom: 12px;
-  padding: 8px;
-  overflow-y: auto;
-  background: #fafafa;
 }
 
-.formarea {
+.chatArea {
+  border: 1px solid #ccc;
+  height: 220px;
+  overflow-y: auto;
+  padding: 8px;
+  margin-bottom: 12px;
+  background: #f9f9f9;
+}
+
+.chatForm {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-input {
+.chatForm input {
   padding: 6px;
-  border: 1px solid #aaa;
+  border: 1px solid #999;
   border-radius: 4px;
 }
 
-button {
-  background: #4caf50;
+.chatForm button {
+  padding: 7px;
+  background: #007bff;
   color: white;
-  padding: 8px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-button:hover {
-  background: #45a049;
+.chatForm button:hover {
+  background: #0056b3;
 }
