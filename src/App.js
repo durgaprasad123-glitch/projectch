@@ -2,58 +2,45 @@ import React, { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [uname, setUname] = useState("");
-  const [msg, setMsg] = useState("");
-  const [allmsg, setAllmsg] = useState([]);
-  const [enter, setEnter] = useState(false);
+  const [chatList, setChatList] = useState([]);
+  const [person, setPerson] = useState("");
+  const [note, setNote] = useState("");
 
-  function handleJoin(e) {
+  function postMsg(e) {
     e.preventDefault();
-    if (uname !== "") {
-      setEnter(true);
-    }
-  }
+    if (person.trim() === "" || note.trim() === "") return;
 
-  function handleSend(e) {
-    e.preventDefault();
-    if (msg === "") return;
-    let temp = [...allmsg];
-    temp.push({ who: uname, what: msg });
-    setAllmsg(temp);
-    setMsg("");
-  }
+    const newLine = { who: person, text: note };
+    setChatList([...chatList, newLine]);
 
-  if (!enter) {
-    return (
-      <div className="box">
-        <h2>Enter Name</h2>
-        <form onSubmit={handleJoin}>
-          <input
-            type="text"
-            value={uname}
-            onChange={(e) => setUname(e.target.value)}
-          />
-          <button type="submit">Join</button>
-        </form>
-      </div>
-    );
+    setPerson("");
+    setNote("");
   }
 
   return (
     <div className="box">
-      <h2>Simple Chat</h2>
-      <div className="chatarea">
-        {allmsg.map((m, i) => (
+      <h2 className="head">Mini Chat Demo</h2>
+
+      <div className="screen">
+        {chatList.map((x, i) => (
           <p key={i}>
-            <b>{m.who}</b>: {m.what}
+            <b>{x.who}:</b> {x.text}
           </p>
         ))}
       </div>
-      <form onSubmit={handleSend} className="sendform">
+
+      <form onSubmit={postMsg} className="formarea">
         <input
           type="text"
-          value={msg}
-          onChange={(e) => setMsg(e.target.value)}
+          placeholder="Enter name"
+          value={person}
+          onChange={(e) => setPerson(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Enter message"
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
         />
         <button type="submit">Send</button>
       </form>
